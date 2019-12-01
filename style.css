@@ -24,14 +24,13 @@
    
    
    .memory {
+       display: flex;
+     flex-wrap: wrap;
        height: 605px;
        width: 605px;
        border: 1px solid black;
        /* Adds 3d effect */
        perspective: 1000px;
-       display: flex;
-     flex-wrap: wrap;
-   
    }
    
    .memory-card{
@@ -39,7 +38,6 @@
        height: 120px;
        margin: 15px;
        transform: scale (1);
-       background-color: var(--title-color);
        padding: 5px;
        /* Adds 3d effect */
        transform-style: preserve-3d;
@@ -54,17 +52,18 @@
        /* make the card on top of each other */
        position: absolute;
        border-radius: 5px;
-       border: 2px solid #ffffff;
-       /* hide backside of the cards*/
+/*        
+       hide backside of the cards */
        backface-visibility: hidden;
    }
    
    .card-front {
        background-color: salmon;
+       transform: rotateY(180deg);
    }
    
    .card-back {
-       background-color: aliceblue;
+       background-color: rgb(250, 210, 210);
    }
    
    

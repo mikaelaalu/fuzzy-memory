@@ -13,7 +13,7 @@ const cardsArray = [
 const memoryGame = document.querySelector(".memory");
 const button = document.querySelectorAll(".button");
 
-const memoryCard = document.querySelectorAll(".memory-card");
+
 
 //make dublette of cardsArray
 const shuffleCards = [...cardsArray, ...cardsArray];
@@ -33,8 +33,8 @@ const stringToHTML = str => {
 // Create card template with a template literal
 const createMemoryCard = (image) => {
     return `<div class="memory-card">
-        <div class="card-front"> </div>
-        <img class="card-back" src="${image}">
+    <img class="card-back" src="images/question.png">
+    <img class="card-front" src="${image}">
         </div>`;
 };
 
@@ -67,13 +67,15 @@ function shuffle(a) {
 
 //flip Cards
 
-function flipCard() {
-    console.log("i was klicked");
+const cards = document.querySelectorAll('.memory-card');
 
+function flipCard() {
+    this.classList.toggle('flip');
 }
+
+cards.forEach(card => card.addEventListener('click', flipCard));
 
 
 
 // Loop throu the card array, waiting for click, when click is happening
 // use flipCard function
-memoryCard.forEach(card => card.addEventListener('click', flipCard));
