@@ -1,12 +1,12 @@
 const cardsArray = [
-    { image: "images/cake.png" },
-    { image: "images/cookies.png" },
-    { image: "images/cup-cake.png" },
-    { image: "images/pretzel.png" },
-    { image: "images/croissant.png" },
-    { image: "images/bagel.png" },
-    { image: "images/biscuit.png" },
-    { image: "images/birthday.png" },
+    { image: "images/cake.png", id: "cake" },
+    { image: "images/cookies.png", id: "cookie" },
+    { image: "images/cup-cake.png", id: "cup-cake" },
+    { image: "images/pretzel.png", id: "preztel" },
+    { image: "images/croissant.png", id: "croissant" },
+    { image: "images/bagel.png", id: "bagel" },
+    { image: "images/biscuit.png", id: "biscuit" },
+    { image: "images/birthday.png", id: "birthday" },
 ]
 
 
@@ -31,10 +31,10 @@ const stringToHTML = str => {
 
 
 // Create card template with a template literal
-const createMemoryCard = (image) => {
-    return `<div class="memory-card">
+const createMemoryCard = (image, id) => {
+    return `<div class="memory-card" data-icon="${id}">
     <img class="card-back" src="images/question.png">
-    <img class="card-front" src="${image}">
+    <img class="card-front" src="${image}" >
         </div>`;
 };
 
@@ -42,7 +42,7 @@ const createMemoryCard = (image) => {
 const generateCards = () => {
     shuffle(shuffleCards);
     shuffleCards.forEach(card => {
-        const image = createMemoryCard(card.image);
+        const image = createMemoryCard(card.image, card.id);
         // console.log(cards);
         // console.log(stringToHTML(image))
         memoryGame.appendChild(stringToHTML(image));
@@ -65,17 +65,40 @@ function shuffle(a) {
 
 
 
-//flip Cards
 
 const cards = document.querySelectorAll('.memory-card');
+let hasFlippedCard = false;
+let firstCard, secondCard;
 
+//flip Cards
 function flipCard() {
+    //Get 'flip' from css 
     this.classList.toggle('flip');
+
+    if (!hasFlippedCard) {
+        //first click 
+        hasFlippedCard = true;
+        firstCard = this;
+    } else {
+        //second klick
+        hasFlippedCard = false;
+        secondCard = this;
+        // console.log(firstCard.dataset.icon);
+        // console.log(secondCard.dataset.icon);
+
+
+        // Card match?
+        if (firstCard.dataset.icon === secondCard.dataset.icon) {
+            firstCard.removeEventListener('click', flipCard);
+            secondCard.removeEventListener('click', flipCard);
+        }
+        console.log("removed");
+    }
+
+
 }
-
-cards.forEach(card => card.addEventListener('click', flipCard));
-
-
 
 // Loop throu the card array, waiting for click, when click is happening
 // use flipCard function
+cards.forEach(card => card.addEventListener('click', flipCard));
+

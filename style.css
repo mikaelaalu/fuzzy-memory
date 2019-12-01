@@ -52,8 +52,7 @@
        /* make the card on top of each other */
        position: absolute;
        border-radius: 5px;
-/*        
-       hide backside of the cards */
+        /*hide backside of the cards */
        backface-visibility: hidden;
    }
    
@@ -66,12 +65,13 @@
        background-color: rgb(250, 210, 210);
    }
    
-   
+   /* On klick */
    .memory-card:active {
        transform: scale(.97);
        transition: transform .2s;
    }
    
+   /* On flip */
    .memory-card.flip {
    transform: rotateY(180deg);
    }
