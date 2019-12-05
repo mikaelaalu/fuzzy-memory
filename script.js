@@ -10,7 +10,14 @@ const cardsArray = [
 ];
 
 const memoryGame = document.querySelector(".memory");
-const button = document.querySelectorAll(".button");
+const button = document.querySelector(".button");
+
+const init = () => {
+  const cards = document.querySelectorAll(".memory-card");
+  // Loop throu the card array, waiting for click, when click is happening
+  // use flipCard function
+  cards.forEach(card => card.addEventListener("click", flipCard));
+};
 
 //make dublette of cardsArray
 const shuffleCards = [...cardsArray, ...cardsArray];
@@ -43,6 +50,7 @@ const generateCards = () => {
 };
 
 generateCards();
+init();
 
 // Shuffles cards
 function shuffle(a) {
@@ -56,7 +64,6 @@ function shuffle(a) {
   return a;
 }
 
-const cards = document.querySelectorAll(".memory-card");
 let hasFlippedCard = false;
 let firstCard, secondCard;
 let lockCards = false;
@@ -72,8 +79,8 @@ const isMatch = () => {
 };
 
 const disabelCards = () => {
-  firstCard.removeEventListener("click", flipCard);
-  secondCard.removeEventListener("click", flipCard);
+  //   firstCard.removeEventListener("click", flipCard);
+  //   secondCard.removeEventListener("click", flipCard);
 
   resetGame();
 };
@@ -119,13 +126,13 @@ function flipCard() {
   }
 }
 
-// Loop throu the card array, waiting for click, when click is happening
-// use flipCard function
-cards.forEach(card => card.addEventListener("click", flipCard));
-
-button.addEventListener("click", playAgain);
-//Function for play again button
 const playAgain = () => {
+  disabelCards();
   memoryGame.innerHTML = "";
   generateCards();
+  init();
 };
+
+button.addEventListener("click", playAgain);
+
+//Function for play again button

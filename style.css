@@ -1,93 +1,116 @@
 :root {
-  
-    --main-bg-color: #eb7b7b;
-    --title-color: #e21335;
-    --title-color-darker: #d30027;
-   
-         
-   }
-   body {
-       box-sizing: border-box;
-       font-family: Arial, Helvetica, sans-serif;
-       background: var(--main-bg-color);
-       height: 100vh;  
-       display: flex;
-       justify-content: center;
-       align-items: center;
-       flex-direction: column;
-   }
-   
-   h1 {
-       text-align: center;
-       color: var(--title-color);
-   }
-   
-   
-   .memory {
-       display: flex;
-     flex-wrap: wrap;
-       height: 605px;
-       width: 605px;
-       border: 1px solid black;
-       /* Adds 3d effect */
-       perspective: 1000px;
-   }
-   
-   .memory-card{
-       width: 120px; 
-       height: 120px;
-       margin: 15px;
-       transform: scale (1);
-       padding: 5px;
-       /* Adds 3d effect */
-       transform-style: preserve-3d;
-       transition: transform .5s;
-   }
-   
-   .card-front,
-   .card-back {
-       width: 100%;
-       height: 100%;
-       padding: 5px;
-       /* make the card on top of each other */
-       position: absolute;
-       border-radius: 5px;
-        /*hide backside of the cards */
-       backface-visibility: hidden;
-   }
-   
-   .card-front {
-       background-color: salmon;
-       transform: rotateY(180deg);
-   }
-   
-   .card-back {
-       background-color: rgb(250, 210, 210);
-   }
-   
-   /* On klick */
-   .memory-card:active {
-       transform: scale(.97);
-       transition: transform .2s;
-   }
-   
-   /* On flip */
-   .memory-card.flip {
-   transform: rotateY(180deg);
-   }
-   
-   .play-again {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-   }
-   
-   button {
-       margin-top: 10px;
-       background-color: var(--title-color);
-       color: white;
-       padding: 5px;
-       border: none;
-       border-radius: 3px;
-       box-shadow: 2px 3px var(--title-color-darker);
-   }
+  --main-bg-color: #fb7171;
+  --title-color: #e21335;
+  --title-color-darker: #d30027;
+}
+body {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--main-bg-color);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+h1 {
+  text-align: center;
+  color: var(--title-color);
+  font-size: 40px;
+}
+
+.memory {
+  display: flex;
+  flex-wrap: wrap;
+  height: 605px;
+  width: 605px;
+  /* Adds 3d effect */
+  perspective: 1000px;
+}
+
+.memory-card {
+  width: 120px;
+  height: 120px;
+  margin: 15px;
+  transform: scale (1);
+  padding: 5px;
+  /* Adds 3d effect */
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+  cursor: pointer;
+}
+
+.card-front,
+.card-back {
+  width: 100%;
+  height: 100%;
+  padding: 5px;
+  /* make the card on top of each other */
+  position: absolute;
+  border-radius: 5px;
+  /*hide backside of the cards */
+  backface-visibility: hidden;
+}
+
+.card-front {
+  background-color: rgb(255, 133, 111);
+  transform: rotateY(180deg);
+}
+
+.card-back {
+  background-color: rgb(250, 210, 210);
+}
+
+/* On klick */
+.memory-card:active {
+  transform: scale(0.97);
+  transition: transform 0.2s;
+}
+
+/* On flip */
+.memory-card.flip {
+  transform: rotateY(180deg);
+}
+
+.play-again {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button {
+  outline: none;
+  margin-top: 10px;
+  width: 100px;
+  height: 40px;
+  background-color: var(--title-color);
+  color: white;
+  padding: 5px;
+  border: none;
+  border-radius: 3px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+button:hover {
+  transform: scale(1.3);
+}
+
+@media (max-width: 600px) {
+  body {
+    background-color: white;
+    justify-content: space-around;
+  }
+
+  .memory {
+    width: 400px;
+    height: 400px;
+  }
+
+  .memory-card {
+    margin: 8px;
+    width: 80px;
+    height: 80px;
+  }
+}
