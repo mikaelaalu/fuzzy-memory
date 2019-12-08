@@ -5,7 +5,7 @@ School assignment
 
 Created fuzzy memory, built with HTML, CSS and Javascript.
 
-### Requirements
+## Requirements
 - There should be at least 8 pairs and a maximum of 10 pairs.
 - The pairs should be randomly positioned before a new game starts.
 - The project should implement nice graphical user interface.
@@ -20,6 +20,8 @@ Clone down the project to you computer:
 - Open the index.html file in your browser.
 
 ## Testers
+*
+*
 
 ## Code review
 
