@@ -1,3 +1,5 @@
+"use strict";
+
 const cardsArray = [
   { image: "images/cake.png", id: "cake" },
   { image: "images/cookies.png", id: "cookie" },
@@ -9,21 +11,10 @@ const cardsArray = [
   { image: "images/birthday.png", id: "birthday" }
 ];
 
-const memoryGame = document.querySelector(".memory");
-const button = document.querySelector(".button");
-
-const init = () => {
-  const cards = document.querySelectorAll(".memory-card");
-  // Loop throu the card array, waiting for click, when click is happening
-  // use flipCard function
-  cards.forEach(card => card.addEventListener("click", flipCard));
-};
-
-//make dublette of cardsArray
-const shuffleCards = [...cardsArray, ...cardsArray];
+const dubbleCards = [...cardsArray, ...cardsArray];
 
 // Helper function to prevent XSS injections
-// Creates an HTML element from string
+// Creates an HTML element from string, using in genereate card function
 const stringToHTML = str => {
   const div = document.createElement("div");
   div.innerHTML = str;
@@ -33,27 +24,13 @@ const stringToHTML = str => {
 // Create card template with a template literal
 const createMemoryCard = (image, id) => {
   return `<div class="memory-card" data-icon="${id}">
-    <img class="card-back" src="images/question.png">
-    <img class="card-front" src="${image}" >
-        </div>`;
+  <img class="card-back" src="images/question.png">
+  <img class="card-front" src="${image}" >
+  </div>`;
 };
-
-// Create all cards
-const generateCards = () => {
-  shuffle(shuffleCards);
-  shuffleCards.forEach(card => {
-    const image = createMemoryCard(card.image, card.id);
-    // console.log(cards);
-    // console.log(stringToHTML(image))
-    memoryGame.appendChild(stringToHTML(image));
-  });
-};
-
-generateCards();
-init();
 
 // Shuffles cards
-function shuffle(a) {
+const shuffle = a => {
   var j, x, i;
   for (i = a.length - 1; i > 0; i--) {
     j = Math.floor(Math.random() * (i + 1));
@@ -62,39 +39,6 @@ function shuffle(a) {
     a[j] = x;
   }
   return a;
-}
-
-let hasFlippedCard = false;
-let firstCard, secondCard;
-let lockCards = false;
-
-const isMatch = () => {
-  // match
-  if (firstCard.dataset.icon === secondCard.dataset.icon) {
-    disabelCards();
-  } else {
-    // no match
-    unflipCards();
-  }
-};
-
-const disabelCards = () => {
-  //   firstCard.removeEventListener("click", flipCard);
-  //   secondCard.removeEventListener("click", flipCard);
-
-  resetGame();
-};
-
-const unflipCards = () => {
-  lockCards = true;
-  setTimeout(() => {
-    firstCard.classList.remove("flip");
-    secondCard.classList.remove("flip");
-
-    lockCards = false;
-
-    resetGame();
-  }, 1300);
 };
 
 const resetGame = () => {
@@ -104,35 +48,76 @@ const resetGame = () => {
   secondCard = null;
 };
 
-//flip Cards
+const memoryGame = document.querySelector(".memory");
+
+// Function that creates all cards
+const generateCards = () => {
+  shuffle(dubbleCards);
+  dubbleCards.forEach(card => {
+    const image = createMemoryCard(card.image, card.id);
+    memoryGame.appendChild(stringToHTML(image));
+  });
+};
+
+const isMatch = () => {
+  // Match
+  if (firstCard.dataset.icon === secondCard.dataset.icon) {
+    resetGame();
+  } else {
+    // No match
+    unflipCards();
+  }
+};
+
+const unflipCards = () => {
+  lockCards = true;
+  setTimeout(() => {
+    firstCard.classList.remove("flip");
+    secondCard.classList.remove("flip");
+    lockCards = false;
+
+    resetGame();
+  }, 1300);
+};
+
+let hasFlippedCard = false;
+let firstCard, secondCard;
+let lockCards = false;
+
 function flipCard() {
-  if (lockCards) return; // if lockcard is true, return,
+  if (lockCards) return;
   if (this === firstCard) return;
-  //Get 'flip' from css
+
   this.classList.toggle("flip");
 
   if (!hasFlippedCard) {
-    //first click
+    //First click
     hasFlippedCard = true;
     firstCard = this;
   } else {
-    //second klick
+    //Second klick
     hasFlippedCard = false;
     secondCard = this;
-    // console.log(firstCard.dataset.icon);
-    // console.log(secondCard.dataset.icon);
 
     isMatch();
   }
 }
 
+const init = () => {
+  const cards = document.querySelectorAll(".memory-card");
+  // Waiting for click and then use flicard function
+  cards.forEach(card => card.addEventListener("click", flipCard));
+};
+
+generateCards();
+init();
+
 const playAgain = () => {
-  disabelCards();
+  resetGame();
   memoryGame.innerHTML = "";
   generateCards();
   init();
 };
+const button = document.querySelector(".button");
 
 button.addEventListener("click", playAgain);
-
-//Function for play again button
