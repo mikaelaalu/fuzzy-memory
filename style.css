@@ -46,10 +46,10 @@ h1 {
   width: 100%;
   height: 100%;
   padding: 5px;
-  /* make the card on top of each other */
+  /* Make the card on top of each other */
   position: absolute;
   border-radius: 5px;
-  /*hide backside of the cards */
+  /*Hide backside of the cards */
   backface-visibility: hidden;
 }
 

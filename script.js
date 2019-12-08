@@ -118,6 +118,7 @@ const playAgain = () => {
   generateCards();
   init();
 };
+
 const button = document.querySelector(".button");
 
 button.addEventListener("click", playAgain);
