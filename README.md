@@ -1,7 +1,7 @@
 # Fuzzy-memory
 <img src="https://media.giphy.com/media/NusOH30J7QiJy/source.gif" width=100%; >
 
-School assignment
+School assignment Yrgo 2019
 
 Created fuzzy memory, built with HTML, CSS and Javascript.
 
@@ -42,3 +42,4 @@ By Michaela Lundborg
 
 ## Licence 
 This project is licensed under the MIT License - see the [LICENSE](https://github.com/mikaelaalu/fuzzy-memory/blob/master/LICENSE) file for details.
+
