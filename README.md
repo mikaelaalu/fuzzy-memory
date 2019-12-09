@@ -19,6 +19,8 @@ Clone down the project to you computer:
 - $ git clone https://github.com/mikaelaalu/fuzzy-memory
 - Open the index.html file in your browser.
 
+Or visit https://fuzzyymemory.netlify.com 
+
 ## Testers
 *
 *
