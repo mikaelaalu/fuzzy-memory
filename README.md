@@ -26,6 +26,19 @@ Or visit https://fuzzyymemory.netlify.com
 * Oskar Joss
 
 ## Code review
+By Michaela Lundborg
+
+* When you get a pair it is still possible to click on the cards and close them again.
+
+* index.html:23 - You don’t need the class “button” on your button-tag 
+
+* script.js:122 - You could use const button = document.querySelector(“button”) and skip the dot (if you remove the class)
+
+* You use arrow functions and “regular” ones in your javascript, in the future you could stick to one of these.
+
+* To make the code even easier to read you could divide the javascript into smaller files, e.g. one for the functions and one for all the data.
+
+* Great job with commenting your code!
 
 ## Licence 
 This project is licensed under the MIT License - see the [LICENSE](https://github.com/mikaelaalu/fuzzy-memory/blob/master/LICENSE) file for details.
