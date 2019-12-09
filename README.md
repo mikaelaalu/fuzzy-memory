@@ -22,8 +22,8 @@ Clone down the project to you computer:
 Or visit https://fuzzyymemory.netlify.com 
 
 ## Testers
-*
-*
+* Victor Ljungblad 
+* Oskar Joss
 
 ## Code review
 
