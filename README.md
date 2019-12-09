@@ -25,6 +25,9 @@ Or visit https://fuzzyymemory.netlify.com
 * Victor Ljungblad 
 * Oskar Joss
 
+## Author
+* Mikaela Lundsgård
+
 ## Code review
 By Michaela Lundborg
 
