@@ -1,7 +1,7 @@
 # Fuzzy-memory
 <img src="https://media.giphy.com/media/NusOH30J7QiJy/source.gif" width=100%; >
 
-School assignment Yrgo 2019
+School assignment, Yrgo 2019
 
 Created fuzzy memory, built with HTML, CSS and Javascript.
 
